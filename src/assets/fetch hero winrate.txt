@@ -1,0 +1,13 @@
+select 
+hero_id, 
+count(distinct match_id) games, 
+sum(case when radiant_win = (player_slot < 128) then 1 else 0 end)::float/count(1) winrate 
+FROM public_matches 
+JOIN public_player_matches using(match_id) 
+JOIN heroes on public_player_matches.hero_id = heroes.id 
+WHERE start_time >= extract(epoch from now() - interval '12 hour')::int 
+AND public_player_matches.hero_id = 1 
+GROUP BY hero_id 
+ORDER BY games descLIMIT 500
+
+Etsi heron winrate ->
