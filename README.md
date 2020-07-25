@@ -1,5 +1,7 @@
 # dota
 
+Äppi, jonka avulla voi valita dota heroja ja tarkastaa kuinka hyvät mahikset voittaa peli.
+
 ## Project setup
 ```
 npm install
